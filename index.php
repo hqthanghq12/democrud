@@ -21,6 +21,9 @@ switch ($luaChon) {
     case 'edit':
         $bookController->update();
         break;
+    case 'delete':
+        $bookController->delete();
+        break;
     default:
         $bookController->index();
         break;

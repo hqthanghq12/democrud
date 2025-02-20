@@ -50,9 +50,55 @@ class BookController{
             // var_dump($_GET['id']);
             $modelBook = new Book();
             $book = $modelBook->getIdDataBook($id);
-    
+            $imageData = $modelBook->getIdDataBook($id)->cover_image;
+            if(isset($_POST['btnSave'])){
+                $title = $_POST['title'];
+                $author = $_POST['author'];
+                $publisher = $_POST['publisher'];
+                $publish_date = $_POST['publish_date'];
+                // Xử lý hình ảnh
+                // var_dump($_FILES);
+                if(empty($_FILES['cover_image']['name'])){
+                    $imageName = $imageData;
+                }else{
+                    //  B1: Lấy địa chỉ thư mục chứa ảnh
+                    $targetDir = 'uploads/';
+                    // B2: Lấy tên ảnh
+                    $imageName = time() .'_'.$_FILES['cover_image']['name'];
+                    $imagePath =  $targetDir.$imageName;
+                    // B3: Upload vào thư mục
+                    move_uploaded_file(
+                        $_FILES['cover_image']['tmp_name'], 
+                        $imagePath
+                    );
+                }
+              
+                // Thêm vào csdl
+                $modelBook = new Book();
+                $result = $modelBook->editBook(
+                    $title, 
+                    $imageName,
+                    $author,
+                    $publisher,
+                    $publish_date,
+                    $id
+                );
+                if($result){
+                    header('Location: ?act=list');
+                }
+            }
         }
         include_once 'views/edit.php';
+    }
+    public function delete(){
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $modelBook = new Book();
+            $result = $modelBook->deleteBook($id);
+            if($result){
+                header('Location: index.php');
+            }
+        }
     }
 }
 ?>

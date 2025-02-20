@@ -24,5 +24,17 @@ class Book extends Model{
         $this->connection->setSQL($sql);
         return $this->connection->first([$id]);
     }
+    public function editBook( $title, $cover_image, $author, $publisher, $publish_date, $id){
+        $sql = "UPDATE {$this->table}  SET `title`= ?,
+        `cover_image`= ?,`author`= ?,
+        `publisher`= ?,`publish_date`= ? WHERE `id`= ?";
+        $this->connection->setSQL($sql);
+        $this->connection->execute([ $title, $cover_image, $author, $publisher, $publish_date, $id]);
+    }
+    public function deleteBook($id){
+        $sql = "DELETE FROM {$this->table} WHERE id =?";
+        $this->connection->setSQL($sql);
+        $this->connection->execute([$id]);
+    }
 }
 ?>

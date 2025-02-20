@@ -22,18 +22,21 @@
         </div>
         <div>
             <label for="title">Tác giả:</label>
-            <input type="text" id="author" name="author">
+            <input type="text" id="author" name="author"
+            value="<?php echo $book->author ?>">
         </div>
         <div>
             <label for="title">Nhà xuất bản:</label>
-            <input type="text" id="publisher" name="publisher">
+            <input type="text" id="publisher" name="publisher"
+            value="<?php echo $book->publisher ?>">
         </div>
         <div>
             <label for="title">Ngày xuất bản:</label>
-            <input type="date" id="publish_date" name="publish_date">
+            <input type="date" id="publish_date" name="publish_date"
+            value="<?php echo $book->publish_date ?>">
         </div>
         <div>
-            <input type="submit" value="Thêm sách" name="btnSave">
+            <input type="submit" value="Sửa sách" name="btnSave">
         </div>
     </form>
 </body>
