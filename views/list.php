@@ -26,7 +26,7 @@
                 <td><?php echo  $value->publisher ?></td>
                 <td><?php echo  $value->publish_date ?></td>
                 <td>
-                    <a href=""><button>Sửa</button></a>
+                    <a href="?act=edit&id=<?php echo  $value->id ?>"><button>Sửa</button></a>
                     <a href=""><button>Xóa</button></a>
                 </td>
             </tr>

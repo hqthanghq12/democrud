@@ -19,5 +19,10 @@ class Book extends Model{
         $this->connection->setSQL($sql);
         $this->connection->execute([$id, $title, $cover_image, $author, $publisher, $publish_date]);
     }
+    public function getIdDataBook($id){
+        $sql = "SELECT * FROM {$this->table} WHERE id =?";
+        $this->connection->setSQL($sql);
+        return $this->connection->first([$id]);
+    }
 }
 ?>

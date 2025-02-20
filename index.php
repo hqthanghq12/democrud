@@ -18,6 +18,9 @@ switch ($luaChon) {
     case 'add':
         $bookController->create();
         break;
+    case 'edit':
+        $bookController->update();
+        break;
     default:
         $bookController->index();
         break;

@@ -44,5 +44,15 @@ class BookController{
         }
         include_once 'views/add.php';
     }
+    public function update(){
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            // var_dump($_GET['id']);
+            $modelBook = new Book();
+            $book = $modelBook->getIdDataBook($id);
+    
+        }
+        include_once 'views/edit.php';
+    }
 }
 ?>
