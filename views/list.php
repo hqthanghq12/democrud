@@ -6,6 +6,7 @@
     <title>Danh sách sách</title>
 </head>
 <body>
+    <a href="?act=add"><button>Thêm sách</button></a>
     <table>
         <tr>
             <th>ID</th>

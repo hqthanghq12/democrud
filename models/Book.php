@@ -14,5 +14,10 @@ class Book extends Model{
         $this->connection->setSQL($sql);
         return $this->connection->all();
     }
+    public function addBook($id, $title, $cover_image, $author, $publisher, $publish_date){
+        $sql = "INSERT INTO {$this->table} VALUES (?,?,?,?,?,?)";
+        $this->connection->setSQL($sql);
+        $this->connection->execute([$id, $title, $cover_image, $author, $publisher, $publish_date]);
+    }
 }
 ?>

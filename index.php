@@ -7,5 +7,19 @@ include_once 'models/Book.php';
 // test controller
 include_once 'controllers/BookController.php';
 $bookController = new BookController();
-$bookController->index();
+// $bookController->index();
+// Viết điều hướng bằng url
+$luaChon = isset($_GET['act']) ? $_GET['act'] : '/';
+// var_dump($luaChon);
+switch ($luaChon) {
+    case 'list':
+        $bookController->index();
+        break;
+    case 'add':
+        $bookController->create();
+        break;
+    default:
+        $bookController->index();
+        break;
+}
 ?>
